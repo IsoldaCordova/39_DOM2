@@ -32,7 +32,6 @@ function validateForm(){
 	}
 	// Email
 	var correo = document.getElementById("input-email");
-	var email = 'me@example.com';
 	var regexMail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	if(correo.value == null || correo.value == ""){
 		span.innerHTML = "Ingresa Correo";
@@ -40,7 +39,7 @@ function validateForm(){
 		return false;
 	}else if (!regexMail.test(correo.value)){
 		span.innerHTML = "Correo equivocado";
-		apellido.parentNode.appendChild(span);
+		correo.parentNode.appendChild(span);
 		return false;
 	}
 	// Password
@@ -49,15 +48,22 @@ function validateForm(){
 		span.innerHTML = "Ingresa Password";
 		contrasena.parentNode.appendChild(span);
 		return false;
-	}else if (contrasena.length < 6){
+	}else if (contrasena.value.length < 6){
 		span.innerHTML = "La contraseña debe tener al menos 6 caracteres";
 		contrasena.parentNode.appendChild(span);
 		return false;
-	}else if ((contrasena == 123456 ) || (contrasena == 098754) || (contrasena == "password")){
+	}else if ((contrasena.value == 123456 ) || (contrasena.value == 098754) || (contrasena.value == "password")){
 		span.innerHTML = "no se puede, cambia password";
 		contrasena.parentNode.appendChild(span);
 		return false;
 	}
+	// Bici
+	var bici = document.getElementsByTagName("select")[0];
+	if( bici.selectedIndex == null || bici.selectedIndex == 0){
+		span.innerHTML = "Por Favor Selecciona tipo de bici";
+		bici.parentNode.appendChild(span);
+		return false;
+	}
  }
- 
+
 
